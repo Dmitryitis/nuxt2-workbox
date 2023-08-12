@@ -1,0 +1,12 @@
+{
+    "projects": [{
+        "id": 1,
+        "title": "John Doe text title",
+        "category": "text"
+      },
+    {
+        "id": 2,
+        "title": "John Doe text title",
+        "category": "text"
+    }]
+}
