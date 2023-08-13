@@ -4,6 +4,7 @@ const Project = require('../models/project')
 const Card = require('../models/card')
 const DatabaseAdapter = require('../adapter/DatabaseAdapter')
 const { curDirname, pathFixture } = require('../../constants')
+const UnsplashAdapter = require('../adapter/UnsplashAdapter')
 
 const generateProject = () => {
   return new Project()
@@ -13,20 +14,22 @@ const generateProject = () => {
     .build()
 }
 
-const generateCard = () => {
+const generateCard = async () => {
+  const generateImage = new UnsplashAdapter()
+  const photo = await generateImage.getRandomPhoto()
   return new Card()
     .setId(faker.datatype.uuid())
     .setName(faker.commerce.productName())
     .setDescription(faker.commerce.productDescription())
     .setPrice(faker.commerce.price(100, 200, 0, '$'))
-    .setImage(faker.image.food(640, 480, true))
+    .setImage(photo)
     .build()
 }
 
-const containerModels = (model) => {
+const containerModels = async (model) => {
   const models = {
     projects: generateProject(),
-    card: generateCard()
+    card: await generateCard()
   }
 
   return models[model] || undefined
@@ -38,7 +41,7 @@ module.exports = async function generateModel (limit, model) {
 
   if (containerModels(model)) {
     for (let i = 0; i < limit; i++) {
-      await db.write(containerModels(model))
+      await db.write(await containerModels(model))
     }
     return true
   } else {
