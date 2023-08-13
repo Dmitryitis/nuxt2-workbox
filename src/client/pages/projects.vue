@@ -1,5 +1,5 @@
 <template>
-  <Project />
+  <Project :items="projects" />
 </template>
 
 <script>
@@ -10,6 +10,19 @@ export default {
   components: {
     Project
   },
-  layout: 'main'
+  layout: 'main',
+  async asyncData ({ $api }) {
+    let projects
+
+    try {
+      projects = await $api.projects.get()
+    } catch (error) {
+      projects = []
+    }
+
+    return {
+      projects
+    }
+  }
 }
 </script>

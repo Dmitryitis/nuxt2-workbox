@@ -1,5 +1,5 @@
 <template>
-  <Cards />
+  <Cards :items="cards" />
 </template>
 
 <script>
@@ -10,6 +10,19 @@ export default {
   components: {
     Cards
   },
-  layout: 'main'
+  layout: 'main',
+
+  async asyncData (context) {
+    let cards
+    try {
+      cards = await context.$api.cards.get()
+    } catch (error) {
+      cards = []
+    }
+
+    return {
+      cards
+    }
+  }
 }
 </script>
