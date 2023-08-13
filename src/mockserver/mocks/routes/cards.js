@@ -1,17 +1,17 @@
 const readFixtureFile = require('../../utils/helpers')
 
-const ALL_PROJECTS = readFixtureFile('projects.json').projects
+const ALL_CARDS = readFixtureFile('card.json').card
 
 module.exports = [{
-  id: 'get-projects',
-  url: '/api/projects',
+  id: 'get-cards',
+  url: '/api/cards',
   method: 'GET',
   variants: [{
     id: 'all', // variant id
     type: 'json', // variant handler id
     options: {
       status: 200, // status to send
-      body: ALL_PROJECTS // body to send
+      body: ALL_CARDS // body to send
     }
   },
   {

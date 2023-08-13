@@ -1,12 +1,12 @@
-const users = require('./users')
 const common = require('./common')
 const projects = require('./projects')
+const cards = require('./cards')
 
 module.exports = {
   routes: [
-    ...users,
     ...common,
-    ...projects
+    ...projects,
+    ...cards
   ]
 
 }

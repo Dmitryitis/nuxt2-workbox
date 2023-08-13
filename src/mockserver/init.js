@@ -9,5 +9,7 @@ server.start().then(() => {
   loadRoutes(routes)
   loadCollections(collections)
 
-  server.mock.collections.select('all-projects')
+  server.mock.collections.select('all-models')
+
+  server.server.addRouter('/api/generate', require('./generate/controller'))
 })

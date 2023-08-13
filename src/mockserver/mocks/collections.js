@@ -1,7 +1,7 @@
 module.exports = [
   {
     id: 'base',
-    routes: ['add-headers:enabled', 'get-users:success', 'get-user:success']
+    routes: ['add-headers:enabled']
   },
   {
     id: 'no-headers',
@@ -9,18 +9,8 @@ module.exports = [
     routes: ['add-headers:disabled']
   },
   {
-    id: 'all-users',
+    id: 'all-models',
     from: 'base',
-    routes: ['get-users:all']
-  },
-  {
-    id: 'user-real',
-    from: 'no-headers',
-    routes: ['get-user:real']
-  },
-  {
-    id: 'all-projects',
-    from: 'base',
-    routes: ['get-projects:all']
+    routes: ['get-projects:all', 'get-cards:all']
   }
 ]
