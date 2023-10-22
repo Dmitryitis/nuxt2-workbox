@@ -13,7 +13,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/png', href: '/favicon.png' }
     ]
   },
 
@@ -38,10 +38,29 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/pwa'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  pwa: {
+    icon: {
+      fileName: 'favicon.png',
+      sizes: [64, 128, 192, 256, 512]
+    },
+    manifest: {
+      name: 'Nuxt + Workbox',
+      short_name: 'Nuxt + Workbox'
+    },
+    workbox: {
+      workboxVersion: '5.1.4',
+      enabled: true,
+      cachingExtensions: ['~/plugins/workbox-cache.js'],
+      offlinePage: '/offline',
+      cleanupOutdatedCaches: true
+    }
   }
 }
