@@ -11,6 +11,15 @@
           Welcome to Nuxt2 + Workbox
         </h2>
       </div>
+
+      <iframe
+        src="https://vk.com/video_ext.php?oid=-46046074&id=456239031&hd=2"
+        width="853"
+        height="480"
+        allow="autoplay; encrypted-media; fullscreen; picture-in-picture;"
+        frameborder="0"
+        allowfullscreen
+      />
     </div>
   </div>
 </template>
